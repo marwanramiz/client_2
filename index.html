@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBA Inteeriors — Aluminium &amp; Interior Fabrication, Coimbatore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+
+  :root{
+    --ink:#1B1E22;
+    --ink-2:#252932;
+    --canvas:#F2EFE6;
+    --canvas-2:#E9E4D6;
+    --card:#FBFAF6;
+    --brass:#AD8B3E;
+    --brass-light:#D8BC7C;
+    --forest:#1F3D34;
+    --forest-light:#2E5A4C;
+    --steel:#6E7580;
+    --line:#DAD3C0;
+    --line-dark:#3A4038;
+  }
+
+  body{
+    font-family:'Inter',sans-serif; color:var(--ink); background:var(--canvas);
+    font-size:15.5px; line-height:1.65; overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{ font-family:'Fraunces',serif; }
+  .mono{ font-family:'JetBrains Mono',monospace; }
+
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+
+  /* ───────── reveal-on-scroll ───────── */
+  .reveal{ opacity:0; transform:translateY(30px); transition:opacity .75s cubic-bezier(.19,1,.22,1), transform .75s cubic-bezier(.19,1,.22,1); }
+  .reveal.from-left{ transform:translateX(-40px); }
+  .reveal.from-right{ transform:translateX(40px); }
+  .reveal.scale-up{ transform:scale(.94); }
+  .reveal.visible{ opacity:1; transform:translate(0,0) scale(1); }
+  .d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;}
+  .d4{transition-delay:.32s;} .d5{transition-delay:.40s;} .d6{transition-delay:.48s;}
+  .d7{transition-delay:.56s;} .d8{transition-delay:.64s;}
+
+  /* ───────── blueprint signature motif ───────── */
+  .blueprint-frame{ position:relative; border:1px solid var(--line-dark); }
+  .blueprint-frame .corner{
+    position:absolute; width:16px; height:16px; color:var(--brass-light);
+    font-family:'JetBrains Mono',monospace; font-size:14px; line-height:1; z-index:3; pointer-events:none;
+  }
+  .corner.tl{ top:-8px; left:-8px; } .corner.tr{ top:-8px; right:-8px; text-align:right; }
+  .corner.bl{ bottom:-8px; left:-8px; } .corner.br{ bottom:-8px; right:-8px; text-align:right; }
+  .spec-tag{
+    position:absolute; z-index:3; background:var(--ink); color:var(--brass-light);
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:.4px;
+    padding:6px 11px; border-radius:3px; display:flex; align-items:center; gap:6px;
+  }
+  .spec-tag::before{ content:'◆'; font-size:7px; color:var(--brass-light); }
+
+  /* ───────── NAV ───────── */
+  nav{
+    position:sticky; top:0; z-index:200; background:rgba(242,239,230,0.92); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line); padding:0 48px; height:76px;
+    display:flex; align-items:center; justify-content:space-between; transition:box-shadow .3s, background .3s;
+  }
+  nav.scrolled{ box-shadow:0 6px 28px rgba(27,30,34,0.08); }
+  .nav-logo{ display:flex; align-items:center; gap:13px; text-decoration:none; }
+  .nav-logo img{ width:48px; height:48px; border-radius:50%; object-fit:cover; border:1.5px solid var(--brass); }
+  .nav-logo-text{ display:flex; flex-direction:column; line-height:1.2; }
+  .nav-logo-text strong{ font-family:'Fraunces',serif; font-size:19px; font-weight:700; color:var(--ink); letter-spacing:-.3px; }
+  .nav-logo-text span{ font-size:9.5px; color:var(--brass); font-weight:600; letter-spacing:2px; text-transform:uppercase; font-family:'JetBrains Mono',monospace; }
+  .nav-links{ display:flex; gap:36px; list-style:none; }
+  .nav-links a{ text-decoration:none; color:var(--ink-2); font-size:14px; font-weight:500; position:relative; padding-bottom:3px; }
+  .nav-links a::after{ content:''; position:absolute; bottom:0; left:0; width:0; height:1.5px; background:var(--brass); transition:width .25s; }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:var(--ink); color:#fff; border:none; padding:12px 24px; border-radius:2px;
+    font-size:13.5px; font-weight:600; cursor:pointer; text-decoration:none; letter-spacing:.3px;
+    transition:background .2s, transform .2s;
+  }
+  .nav-cta:hover{ background:var(--forest); transform:translateY(-1px); }
+
+  /* ───────── HERO ───────── */
+  .hero-wrap{ max-width:1240px; margin:0 auto; padding:0 48px; }
+  .hero{ padding:76px 0 60px; display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace;
+    font-size:12px; font-weight:600; color:var(--forest); letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:22px; padding-bottom:8px; border-bottom:1px solid var(--line-dark);
+  }
+  .hero-eyebrow::before{ content:'EST. 1994'; background:var(--forest); color:#fff; padding:3px 8px; border-radius:2px; letter-spacing:1px; }
+  .hero h1{
+    font-size:52px; font-weight:600; line-height:1.06; letter-spacing:-1.5px; color:var(--ink); margin-bottom:22px;
+  }
+  .hero h1 em{ font-style:italic; font-weight:400; color:var(--brass); }
+  .hero-desc{ color:var(--steel); font-size:16px; line-height:1.8; margin-bottom:34px; max-width:480px; }
+  .hero-actions{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:30px; }
+  .btn-primary{
+    background:var(--ink); color:#fff; border:none; padding:15px 28px; border-radius:2px;
+    font-size:14px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:9px;
+    text-decoration:none; letter-spacing:.3px; transition:background .2s, transform .2s;
+  }
+  .btn-primary:hover{ background:var(--forest); transform:translateY(-2px); }
+  .btn-outline{
+    background:transparent; color:var(--ink); border:1px solid var(--line-dark); padding:14px 26px; border-radius:2px;
+    font-size:14px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:9px;
+    text-decoration:none; transition:border-color .2s, color .2s, transform .2s;
+  }
+  .btn-outline:hover{ border-color:var(--brass); color:var(--brass); transform:translateY(-2px); }
+  .hero-facts{ display:flex; gap:0; border-top:1px solid var(--line-dark); padding-top:22px; }
+  .hero-fact{ padding-right:28px; margin-right:28px; border-right:1px solid var(--line); }
+  .hero-fact:last-child{ border-right:none; margin-right:0; padding-right:0; }
+  .hero-fact strong{ display:block; font-family:'Fraunces',serif; font-size:24px; font-weight:700; color:var(--ink); }
+  .hero-fact span{ font-size:11.5px; color:var(--steel); font-family:'JetBrains Mono',monospace; letter-spacing:.3px; }
+
+  .hero-visual{ position:relative; }
+  .hero-img{ width:100%; height:430px; overflow:hidden; background:var(--canvas-2); }
+  .hero-img img{ width:100%; height:100%; object-fit:cover; }
+  .hero-visual .spec-tag.tag-1{ bottom:20px; left:-18px; }
+  .hero-visual .spec-tag.tag-2{ top:24px; right:-14px; background:var(--brass); color:var(--ink); }
+  .hero-visual .spec-tag.tag-2::before{ color:var(--ink); }
+
+  /* ───────── TRUST STRIP ───────── */
+  .trust-strip{ background:var(--ink); padding:22px 48px; }
+  .trust-inner{ max-width:1240px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  .trust-item{ display:flex; align-items:center; gap:11px; color:#EDEAE0; }
+  .trust-item .t-icon{ color:var(--brass-light); font-size:16px; }
+  .trust-item .t-text strong{ font-size:13.5px; font-weight:700; display:block; }
+  .trust-item .t-text span{ font-size:11.5px; color:#9A9F8F; font-family:'JetBrains Mono',monospace; }
+  .trust-divider{ width:1px; height:32px; background:#3A4038; }
+
+  /* ───────── SECTION COMMONS ───────── */
+  section{ padding:100px 48px; }
+  .container{ max-width:1200px; margin:0 auto; }
+  .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; color:var(--brass); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:14px; }
+  .section-title{ font-size:40px; font-weight:600; letter-spacing:-1.3px; color:var(--ink); line-height:1.12; margin-bottom:16px; }
+  .section-title em{ font-style:italic; font-weight:400; color:var(--brass); }
+  .section-sub{ font-size:15.5px; color:var(--steel); max-width:580px; line-height:1.8; margin-bottom:56px; }
+  .text-center{ text-align:center; }
+
+  /* ───────── ABOUT ───────── */
+  .about{ background:var(--card); }
+  .about-inner{ display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:center; }
+  .about-img{ height:420px; overflow:hidden; background:var(--canvas-2); position:relative; }
+  .about-img img{ width:100%; height:100%; object-fit:cover; }
+  .about-features{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:30px; }
+  .about-feature{
+    display:flex; align-items:flex-start; gap:11px; font-size:13.5px; font-weight:600; color:var(--ink-2);
+    border-top:1px solid var(--line); padding:14px 0 0;
+  }
+  .about-feature .icon{ color:var(--brass); font-family:'JetBrains Mono',monospace; font-size:12px; margin-top:1px; }
+  .about-quote{ font-family:'Fraunces',serif; font-style:italic; font-size:18px; color:var(--forest); margin-top:28px; line-height:1.6; border-left:2px solid var(--brass); padding-left:20px; }
+  .about-quote span{ display:block; margin-top:10px; font-family:'Inter',sans-serif; font-style:normal; font-size:12px; color:var(--steel); font-weight:600; }
+
+  /* ───────── CATEGORIES ───────── */
+  .categories{ background:var(--canvas); }
+  .cat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .cat-card{
+    background:var(--card); border:1px solid var(--line); padding:28px 24px; transition:transform .3s, box-shadow .3s, border-color .3s;
+    position:relative; overflow:hidden;
+  }
+  .cat-card::before{ content:''; position:absolute; top:0; left:0; width:0; height:2px; background:var(--brass); transition:width .3s; }
+  .cat-card:hover{ transform:translateY(-6px); box-shadow:0 22px 44px rgba(27,30,34,0.10); }
+  .cat-card:hover::before{ width:100%; }
+  .cat-num{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--brass); margin-bottom:16px; }
+  .cat-card h3{ font-size:16px; font-weight:700; color:var(--ink); margin-bottom:9px; line-height:1.3; }
+  .cat-card p{ font-size:13px; color:var(--steel); line-height:1.65; }
+
+  /* ───────── PRODUCTS ───────── */
+  .products{ background:var(--card); }
+  .prod-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px 20px; }
+  .prod-card{ }
+  .prod-frame{ height:230px; overflow:hidden; background:var(--canvas-2); margin-bottom:0; }
+  .prod-frame img{ width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+  .prod-card:hover .prod-frame img{ transform:scale(1.06); }
+  .prod-meta{ padding:16px 2px 0; display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .prod-meta h4{ font-size:14.5px; font-weight:700; color:var(--ink); line-height:1.35; }
+  .prod-meta .price{ font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--brass); white-space:nowrap; }
+  .prod-meta .spec{ font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--steel); margin-top:4px; letter-spacing:.2px; }
+
+  /* ───────── WHY / PROCESS (dark) ───────── */
+  .why{ background:var(--ink); color:#EDEAE0; }
+  .why .eyebrow{ color:var(--brass-light); }
+  .why .section-title{ color:#fff; }
+  .why .section-sub{ color:#9A9F8F; }
+  .why-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#3A4038; border:1px solid #3A4038; }
+  .why-item{ background:var(--ink); padding:30px 24px; transition:background .25s; }
+  .why-item:hover{ background:var(--ink-2); }
+  .why-item .w-num{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--brass-light); margin-bottom:14px; }
+  .why-item h4{ font-size:14.5px; font-weight:700; margin-bottom:8px; }
+  .why-item p{ font-size:12.5px; color:#9A9F8F; line-height:1.6; }
+
+  /* ───────── PROCESS ───────── */
+  .process{ background:var(--canvas); }
+  .process-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:54px; position:relative; }
+  .process-step{ position:relative; padding:0 22px 0 0; border-left:1px solid var(--line-dark); padding-left:22px; }
+  .process-step:first-child{ border-left:none; padding-left:0; }
+  .step-num{ font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--brass); margin-bottom:14px; letter-spacing:.5px; }
+  .process-step h3{ font-size:16px; font-weight:700; color:var(--ink); margin-bottom:9px; }
+  .process-step p{ font-size:13px; color:var(--steel); line-height:1.7; }
+
+  /* ───────── SERVICE AREA ───────── */
+  .areas-section{ padding:0 48px 100px; }
+  .areas{
+    background:linear-gradient(135deg,var(--forest) 0%, var(--forest-light) 100%);
+    padding:54px 58px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+    max-width:1200px; margin:0 auto; box-shadow:0 30px 70px rgba(31,61,52,0.25);
+  }
+  .areas .eyebrow{ color:var(--brass-light); }
+  .areas h2{ font-size:32px; font-weight:600; color:#fff; letter-spacing:-1px; line-height:1.15; margin-bottom:16px; }
+  .areas p{ color:#D6E0DA; font-size:14px; line-height:1.8; }
+  .areas-tags{ display:flex; flex-wrap:wrap; gap:9px; }
+  .area-tag{ background:rgba(255,255,255,0.1); color:#fff; font-size:12.5px; font-weight:600; padding:8px 16px; border:1px solid rgba(255,255,255,0.25); font-family:'JetBrains Mono',monospace; }
+
+  /* ───────── BOOKING / CONTACT ───────── */
+  .contact{ background:var(--card); }
+  .contact-intro{ text-align:center; margin-bottom:56px; }
+  .contact-intro .section-sub{ margin:0 auto; }
+  .contact-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:28px; align-items:start; }
+  .contact-info{ background:var(--ink); padding:44px 40px; color:#fff; }
+  .contact-info h3{ font-family:'Fraunces',serif; font-size:24px; font-weight:700; margin-bottom:6px; }
+  .contact-info .addr{ font-size:13px; color:#9A9F8F; margin-bottom:30px; line-height:1.7; }
+  .contact-phone-box{ background:var(--ink-2); padding:18px 20px; margin-bottom:20px; border-left:2px solid var(--brass); }
+  .contact-phone-box .label{ font-size:10.5px; color:#8A8F80; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:5px; font-family:'JetBrains Mono',monospace; }
+  .contact-phone-box .number{ font-size:21px; font-weight:700; color:var(--brass-light); font-family:'JetBrains Mono',monospace; }
+  .contact-btns{ display:flex; gap:10px; margin-bottom:30px; }
+  .btn-teal{ background:var(--forest); color:#fff; border:none; padding:13px 18px; border-radius:2px; font-size:13px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:8px; text-decoration:none; transition:background .2s, transform .2s; }
+  .btn-teal:hover{ background:var(--forest-light); transform:translateY(-2px); }
+  .btn-green{ background:#16803D; color:#fff; border:none; padding:13px 18px; border-radius:2px; font-size:13px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:8px; text-decoration:none; transition:background .2s, transform .2s; }
+  .btn-green:hover{ background:#1A9647; transform:translateY(-2px); }
+  .map-placeholder{ border:1px solid #3A4038; }
+  .map-placeholder iframe{ width:100%; height:230px; border:0; display:block; filter:grayscale(.25) contrast(1.05); }
+  .indiamart-link{ display:block; margin-top:16px; font-size:12px; color:#9A9F8F; text-decoration:none; border-top:1px solid #3A4038; padding-top:16px; }
+  .indiamart-link strong{ color:var(--brass-light); }
+
+  .booking-form{ background:var(--canvas); border:1px solid var(--line-dark); padding:44px 40px; }
+  .booking-form h3{ font-family:'Fraunces',serif; font-size:23px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+  .booking-form .form-sub{ font-size:13px; color:var(--steel); margin-bottom:28px; line-height:1.7; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group{ margin-bottom:16px; }
+  .form-group label{ display:block; font-size:11.5px; font-weight:700; color:var(--ink-2); margin-bottom:7px; text-transform:uppercase; letter-spacing:.8px; font-family:'JetBrains Mono',monospace; }
+  .form-group input, .form-group select, .form-group textarea{
+    width:100%; padding:13px 15px; border:1px solid var(--line-dark); border-radius:2px; font-size:14px;
+    font-family:'Inter',sans-serif; color:var(--ink); outline:none; transition:border-color .2s, box-shadow .2s; background:#fff;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus{ border-color:var(--brass); box-shadow:0 0 0 3px rgba(173,139,62,0.15); }
+  .form-group textarea{ height:92px; resize:vertical; }
+  .form-group select{ appearance:none; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236E7580' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 14px center; }
+  .btn-submit{
+    width:100%; background:var(--ink); color:#fff; border:none; padding:16px; border-radius:2px; font-size:14.5px;
+    font-weight:700; cursor:pointer; font-family:inherit; letter-spacing:.3px; transition:background .2s, transform .2s;
+  }
+  .btn-submit:hover{ background:var(--forest); transform:translateY(-2px); }
+
+  /* ───────── FOOTER ───────── */
+  footer{ background:var(--ink); color:#9A9F8F; padding:70px 48px 30px; }
+  .footer-grid{ display:grid; grid-template-columns:1.8fr 1fr 1.2fr 1.4fr; gap:44px; max-width:1200px; margin:0 auto 50px; }
+  .footer-brand{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .footer-brand img{ width:40px; height:40px; border-radius:50%; border:1.5px solid var(--brass); }
+  .footer-brand span{ font-family:'Fraunces',serif; font-size:19px; font-weight:700; color:#fff; }
+  .footer-col p{ font-size:13px; line-height:1.85; }
+  .footer-col h4{ font-size:12px; font-weight:700; color:#fff; margin-bottom:18px; letter-spacing:1.5px; text-transform:uppercase; font-family:'JetBrains Mono',monospace; }
+  .footer-col ul{ list-style:none; }
+  .footer-col ul li{ margin-bottom:10px; }
+  .footer-col ul li a{ font-size:13px; text-decoration:none; transition:color .2s; }
+  .footer-col ul li a:hover{ color:var(--brass-light); }
+  .footer-col .contact-detail{ font-size:13px; line-height:1.9; }
+  .footer-bottom{ border-top:1px solid #3A4038; padding-top:24px; display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; flex-wrap:wrap; gap:10px; }
+  .footer-bottom p{ font-size:12px; color:#6E7368; }
+
+  /* ───────── RESPONSIVE ───────── */
+  @media (max-width:980px){
+    .hero, .about-inner, .contact-grid, .areas{ grid-template-columns:1fr; }
+    .cat-grid, .why-grid, .prod-grid{ grid-template-columns:1fr 1fr; }
+    .process-steps{ grid-template-columns:1fr 1fr; row-gap:36px; }
+    .process-step{ border-left:none; padding-left:0; border-top:1px solid var(--line-dark); padding-top:22px; }
+    .process-step:first-child{ border-top:none; padding-top:0; }
+    nav{ padding:0 20px; }
+    .nav-links{ display:none; }
+    section{ padding:64px 20px; }
+    .areas-section{ padding:0 20px 64px; }
+    .areas{ padding:38px 28px; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .hero-wrap{ padding:0 20px; }
+    .hero{ padding:52px 0 48px; }
+    .hero h1{ font-size:36px; }
+    .section-title{ font-size:29px; }
+    .form-row{ grid-template-columns:1fr; }
+    .trust-strip{ padding:18px 20px; }
+    .booking-form, .contact-info{ padding:32px 26px; }
+  }
+  @media (max-width:600px){
+    .cat-grid, .why-grid, .prod-grid{ grid-template-columns:1fr; }
+    .process-steps{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; gap:34px; }
+    .trust-inner{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .trust-divider{ display:none; }
+    .hero-facts{ flex-wrap:wrap; row-gap:16px; }
+    .hero-fact{ padding-right:20px; margin-right:20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#">
+    <img src="https://5.imimg.com/data5/EX/BG/MY-15996111/sba-inteeriors-120x120.jpg" alt="SBA Inteeriors Logo">
+    <div class="nav-logo-text">
+      <strong>SBA Inteeriors</strong>
+      <span>Aluminium &amp; Interior Fabrication</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#products">Work</a></li>
+    <li><a href="#booking">Book a Visit</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:+918047515624">Call +91 80475 15624</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">Coimbatore, Tamil Nadu</div>
+      <h1 class="reveal d1">Interiors measured<br>to the millimetre,<br><em>built to be lived in.</em></h1>
+      <p class="hero-desc reveal d2">SBA Inteeriors fabricates aluminium windows, doors, glass partitions, modular kitchens and wooden wardrobes for homes and workplaces across Coimbatore — every job priced, specified, and finished with the precision of a proprietor who has run this workshop since 1994.</p>
+      <div class="hero-actions reveal d3">
+        <a class="btn-primary" href="#booking">Book a Site Visit →</a>
+        <a class="btn-outline" href="tel:+918047515624">Call the Workshop</a>
+      </div>
+      <div class="hero-facts reveal d4">
+        <div class="hero-fact"><strong>1994</strong><span>WORKSHOP FOUNDED</span></div>
+        <div class="hero-fact"><strong>9</strong><span>PRODUCT CATEGORIES</span></div>
+        <div class="hero-fact"><strong>4.0★</strong><span>RATED ON INDIAMART</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal from-right">
+      <div class="hero-img blueprint-frame">
+        <span class="corner tl">+</span><span class="corner tr">+</span><span class="corner bl">+</span><span class="corner br">+</span>
+        <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/355575730/XD/QB/LX/15996111/island-modular-kitchen-500x500.png" alt="Island Modular Kitchen by SBA Inteeriors">
+      </div>
+      <div class="spec-tag tag-1 mono">ISLAND KITCHEN · ₹2,500/SQFT</div>
+      <div class="spec-tag tag-2 mono">SINCE 1994</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item reveal"><span class="t-icon">◆</span><div class="t-text"><strong>Sole Proprietorship</strong><span>GST Registered Manufacturer</span></div></div>
+    <div class="trust-divider reveal d1"></div>
+    <div class="trust-item reveal d1"><span class="t-icon">◆</span><div class="t-text"><strong>N. Chandrasekaran</strong><span>Proprietor, B.K. Pudur Workshop</span></div></div>
+    <div class="trust-divider reveal d2"></div>
+    <div class="trust-item reveal d2"><span class="t-icon">◆</span><div class="t-text"><strong>Priced Per Sq. Ft.</strong><span>Transparent, itemised quoting</span></div></div>
+    <div class="trust-divider reveal d3"></div>
+    <div class="trust-item reveal d3"><span class="t-icon">◆</span><div class="t-text"><strong>In-House Fabrication</strong><span>Own quality inspection unit</span></div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img blueprint-frame reveal from-left">
+        <span class="corner tl">+</span><span class="corner tr">+</span><span class="corner bl">+</span><span class="corner br">+</span>
+        <img src="https://5.imimg.com/data5/SELLER/Default/2026/7/626197006/PX/NU/SK/15996111/wooden-modular-kitchen-500x500.jpg" alt="Wooden Modular Kitchen by SBA Inteeriors">
+      </div>
+      <div>
+        <div class="eyebrow reveal">About the Workshop</div>
+        <h2 class="section-title reveal d1">Three decades of aluminium and interior work, still hands-on.</h2>
+        <p class="reveal d2" style="color:var(--steel);font-size:15.5px;line-height:1.8;margin-bottom:4px;">Commenced in 1994 at B.K. Pudur, Coimbatore, SBA Inteeriors is a sole proprietorship run by N. Chandrasekaran, manufacturing UPVC and aluminium windows, aluminium doors, modular kitchens, wooden wardrobes, and ACP cladding. Every piece passes through an in-house quality inspection unit before it reaches site — our team works directly with each customer to match the design, material, and timeline to the brief, without cutting corners on finish.</p>
+        <div class="about-features">
+          <div class="about-feature reveal d2"><span class="icon">01</span> UPVC &amp; aluminium window fabrication</div>
+          <div class="about-feature reveal d3"><span class="icon">02</span> Modular kitchens &amp; wooden wardrobes</div>
+          <div class="about-feature reveal d4"><span class="icon">03</span> Glass &amp; aluminium office partitions</div>
+          <div class="about-feature reveal d5"><span class="icon">04</span> ACP cladding &amp; loft covering</div>
+        </div>
+        <div class="about-quote reveal d5">"Quality inspection happens in our own unit — the customer's exact requirement decides the material, not the other way around."<span>N. CHANDRASEKARAN · PROPRIETOR</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow reveal">What We Build</div>
+      <h2 class="section-title reveal d1">Every category, one <em>workshop.</em></h2>
+      <p class="section-sub reveal d2" style="margin:0 auto 56px;">From a single aluminium window to a full kitchen and wardrobe fit-out — fabricated, installed and finished by the same team.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal d1"><div class="cat-num mono">01 / ALUMINIUM</div><h3>Windows</h3><p>Sliding, outdoor &amp; grill windows in toughened glass, powder-coated finishes.</p></div>
+      <div class="cat-card reveal d2"><div class="cat-num mono">02 / ALUMINIUM</div><h3>Doors</h3><p>Glass doors, sliding doors and hinged partitions for home and office entries.</p></div>
+      <div class="cat-card reveal d3"><div class="cat-num mono">03 / KITCHEN</div><h3>Modular Kitchens</h3><p>Island, straight, wooden and stainless steel layouts built to your floor plan.</p></div>
+      <div class="cat-card reveal d4"><div class="cat-num mono">04 / STORAGE</div><h3>Wooden Wardrobes</h3><p>Bedroom, modular and designer wardrobes in wood and plywood finishes.</p></div>
+      <div class="cat-card reveal d1"><div class="cat-num mono">05 / PARTITIONS</div><h3>Office &amp; Glass Partitions</h3><p>Aluminium office partitions, frameless and toughened glass dividers.</p></div>
+      <div class="cat-card reveal d2"><div class="cat-num mono">06 / FACADE</div><h3>ACP Cladding</h3><p>Aluminium composite panel cladding for exteriors and signage fronts.</p></div>
+      <div class="cat-card reveal d3"><div class="cat-num mono">07 / STORAGE</div><h3>Loft Covers</h3><p>Wooden and powder-coated aluminium loft covering over wardrobes and storage.</p></div>
+      <div class="cat-card reveal d4"><div class="cat-num mono">08 / CABINETRY</div><h3>Kitchen Cabinets</h3><p>Standalone modular kitchen cabinets sized to existing kitchen layouts.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow reveal">From the Workshop Floor</div>
+      <h2 class="section-title reveal d1">Recent <em>fabrication</em> &amp; installs.</h2>
+      <p class="section-sub reveal d2" style="margin:0 auto 56px;">A sample of work priced and specified exactly as quoted to customers — real jobs, real per-sq.-ft. rates.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card reveal d1">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/SELLER/Default/2026/7/626204868/XU/VO/YE/15996111/aluminum-outdoor-window-500x500.jpg" alt="Aluminum Outdoor Window" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Aluminium Outdoor Window</h4><span class="price mono">₹650/SQFT</span></div>
+        <div class="spec mono">2-TRACK · TOUGHENED GLASS</div>
+      </div>
+      <div class="prod-card reveal d2">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/SELLER/Default/2026/7/626203756/XE/LT/ZA/15996111/toughened-glass-partition-500x500.jpg" alt="Toughened Glass Partition" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Toughened Glass Partition</h4><span class="price mono">₹600/SQFT</span></div>
+        <div class="spec mono">10MM · SLIMLINE STYLE</div>
+      </div>
+      <div class="prod-card reveal d3">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/SELLER/Default/2026/7/626194179/LC/FD/IA/15996111/bedroom-wooden-wardrobe-500x500.jpg" alt="Bedroom Wooden Wardrobe" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Bedroom Wooden Wardrobe</h4><span class="price mono">₹1,700/PC</span></div>
+        <div class="spec mono">HINGED DOOR · PLYWOOD</div>
+      </div>
+      <div class="prod-card reveal d4">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/WB/FJ/MY-15996111/acp-cladding-work-500x500.jpg" alt="ACP Cladding Work" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>ACP Cladding Work</h4><span class="price mono">₹325/SQFT</span></div>
+        <div class="spec mono">EXTERIOR FACADE FINISH</div>
+      </div>
+      <div class="prod-card reveal d1">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/YB/KE/MY-15996111/aluminium-sliding-window-500x500.jpg" alt="Aluminium Sliding Window" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Aluminium Sliding Window</h4><span class="price mono">₹300/SQFT</span></div>
+        <div class="spec mono">STANDARD SECTION</div>
+      </div>
+      <div class="prod-card reveal d2">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/SELLER/Default/2023/10/355572276/AX/CP/AG/15996111/frameless-glass-partitions-500x500.jpg" alt="Frameless Glass Partitions" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Frameless Glass Partition</h4><span class="price mono">₹580/SQFT</span></div>
+        <div class="spec mono">FRAMELESS · TOUGHENED</div>
+      </div>
+      <div class="prod-card reveal d3">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/SELLER/Default/2026/7/626207414/DS/ET/AQ/15996111/wooden-loft-cover-500x500.jpg" alt="Wooden Loft Cover" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Wooden Loft Cover</h4><span class="price mono">₹800/SQFT</span></div>
+        <div class="spec mono">LAMINATED · OVER WARDROBE</div>
+      </div>
+      <div class="prod-card reveal d4">
+        <div class="prod-frame"><img src="https://5.imimg.com/data5/SELLER/Default/2026/7/626195534/RA/LN/JH/15996111/stainless-steel-modular-kitchen-500x500.jpg" alt="Stainless Steel Modular Kitchen" onerror="this.parentElement.style.background='#E9E4D6'"></div>
+        <div class="prod-meta"><h4>Stainless Steel Kitchen</h4><span class="price mono">₹1,500/SQFT</span></div>
+        <div class="spec mono">MODULAR · SS FINISH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="container">
+    <div class="eyebrow reveal">Why SBA Inteeriors</div>
+    <h2 class="section-title reveal d1" style="margin-bottom:46px;">Run by one proprietor, held to <em>one standard.</em></h2>
+    <div class="why-grid">
+      <div class="why-item reveal d1"><div class="w-num mono">A</div><h4>Own Fabrication Unit</h4><p>Products are manufactured and inspected in-house, not outsourced.</p></div>
+      <div class="why-item reveal d2"><div class="w-num mono">B</div><h4>Transparent Sq. Ft. Pricing</h4><p>Every product listed and quoted by material, size and rate — no guesswork.</p></div>
+      <div class="why-item reveal d3"><div class="w-num mono">C</div><h4>Direct With the Proprietor</h4><p>N. Chandrasekaran personally oversees requirement discussions and jobs.</p></div>
+      <div class="why-item reveal d4"><div class="w-num mono">D</div><h4>30+ Years in Coimbatore</h4><p>Operating from B.K. Pudur since 1994, well known within the local trade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow reveal">How a Job Runs</div>
+      <h2 class="section-title reveal d1">From first call to <em>handover.</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal d1"><div class="step-num mono">STEP 01</div><h3>Enquiry &amp; Site Visit</h3><p>Call, WhatsApp, or book a visit — we come measure the space and understand the brief.</p></div>
+      <div class="process-step reveal d2"><div class="step-num mono">STEP 02</div><h3>Material &amp; Quote</h3><p>You choose the material, finish and specification; we quote per sq. ft. or per piece.</p></div>
+      <div class="process-step reveal d3"><div class="step-num mono">STEP 03</div><h3>Fabrication</h3><p>Built and quality-checked at our B.K. Pudur workshop before it leaves for site.</p></div>
+      <div class="process-step reveal d4"><div class="step-num mono">STEP 04</div><h3>Installation</h3><p>Fitted, tested and handed over by the same team that quoted the job.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<div class="areas-section">
+  <div class="areas reveal scale-up">
+    <div class="areas-left">
+      <div class="eyebrow">Coverage</div>
+      <h2>Fabrication &amp; installation across Coimbatore.</h2>
+      <p>Based at B.K. Pudur, serving residential and commercial projects across Coimbatore city and surrounding areas — call ahead to confirm coverage for your location.</p>
+    </div>
+    <div class="areas-tags">
+      <span class="area-tag">B.K. Pudur</span>
+      <span class="area-tag">RS Puram</span>
+      <span class="area-tag">Peelamedu</span>
+      <span class="area-tag">Saibaba Colony</span>
+      <span class="area-tag">Gandhipuram</span>
+      <span class="area-tag">Singanallur</span>
+      <span class="area-tag">Vadavalli</span>
+      <span class="area-tag">Coimbatore &amp; nearby</span>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING / CONTACT -->
+<section class="contact" id="booking">
+  <div class="container">
+    <div class="contact-intro">
+      <div class="eyebrow reveal">Get in Touch</div>
+      <h2 class="section-title reveal d1">Book a site visit or <em>request a quote.</em></h2>
+      <p class="section-sub reveal d2">Call directly for urgent work, message on WhatsApp, or book a preferred visit slot below — sent straight to the workshop.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal from-left">
+        <h3>SBA Inteeriors</h3>
+        <p class="addr">B.K. Pudur, Coimbatore, Tamil Nadu · Est. 1994<br>Proprietor: N. Chandrasekaran</p>
+        <div class="contact-phone-box"><div class="label">Phone / WhatsApp</div><div class="number">+91 80475 15624</div></div>
+        <div class="contact-btns">
+          <a class="btn-teal" href="tel:+918047515624">Click to Call</a>
+          <a class="btn-green" href="https://wa.me/918047515624" target="_blank">WhatsApp</a>
+        </div>
+        <div class="map-placeholder">
+          <iframe src="https://www.google.com/maps?q=Coimbatore,Tamil%20Nadu&output=embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <a class="indiamart-link" href="https://www.indiamart.com/sbainteeriors/" target="_blank">View full catalogue on <strong>IndiaMART →</strong></a>
+      </div>
+      <div class="booking-form reveal from-right">
+        <h3>Book a Site Visit</h3>
+        <p class="form-sub">Tell us what you need measured or quoted, and pick a slot that works — we'll confirm on WhatsApp.</p>
+        <form id="bookingForm" onsubmit="sendBooking(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+            <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="Mobile number" required></div>
+          </div>
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select name="service" required>
+              <option value="">Select a service...</option>
+              <option>Aluminium window installation</option>
+              <option>Aluminium door / sliding door</option>
+              <option>Modular kitchen</option>
+              <option>Wooden wardrobe</option>
+              <option>Office / glass partition</option>
+              <option>ACP cladding work</option>
+              <option>Loft covering</option>
+              <option>Repair / servicing</option>
+              <option>Other requirement</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Preferred Date</label><input type="date" name="date" required></div>
+            <div class="form-group">
+              <label>Preferred Time</label>
+              <select name="time" required>
+                <option value="">Select slot...</option>
+                <option>Morning (9 AM – 12 PM)</option>
+                <option>Afternoon (12 PM – 4 PM)</option>
+                <option>Evening (4 PM – 7 PM)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label>Message</label><textarea name="message" placeholder="Room size, material preference, or anything else we should know"></textarea></div>
+          <button type="submit" class="btn-submit">Send Booking Request →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col reveal">
+      <div class="footer-brand">
+        <img src="https://5.imimg.com/data5/EX/BG/MY-15996111/sba-inteeriors-120x120.jpg" alt="SBA Inteeriors">
+        <span>SBA Inteeriors</span>
+      </div>
+      <p>Aluminium and interior fabrication workshop in Coimbatore, building windows, doors, kitchens and wardrobes since 1994.</p>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#products">Our Work</a></li>
+        <li><a href="#booking">Book a Visit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#categories">Aluminium Windows</a></li>
+        <li><a href="#categories">Aluminium Doors</a></li>
+        <li><a href="#categories">Modular Kitchens</a></li>
+        <li><a href="#categories">Wooden Wardrobes</a></li>
+        <li><a href="#categories">ACP Cladding</a></li>
+      </ul>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Contact</h4>
+      <p class="contact-detail">
+        B.K. Pudur, Coimbatore,<br>Tamil Nadu<br><br>
+        +91 80475 15624<br>
+        N. Chandrasekaran (Proprietor)
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SBA Inteeriors. All Rights Reserved.</p>
+    <p>Aluminium &amp; Interior Fabrication, Coimbatore</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Trigger hero elements immediately on load
+  document.querySelectorAll('.hero .reveal, .hero-wrap .reveal').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 100);
+  });
+
+  // Nav shadow on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Minimum bookable date = today
+  const dateInput = document.querySelector('#bookingForm [name="date"]');
+  if (dateInput) { dateInput.min = new Date().toISOString().split('T')[0]; }
+
+  // Booking → WhatsApp
+  function sendBooking(e) {
+    e.preventDefault();
+    const form = document.getElementById('bookingForm');
+    const name = form.querySelector('[name="name"]').value || '';
+    const phone = form.querySelector('[name="phone"]').value || '';
+    const service = form.querySelector('[name="service"]').value || '';
+    const date = form.querySelector('[name="date"]').value || '';
+    const time = form.querySelector('[name="time"]').value || '';
+    const message = form.querySelector('[name="message"]').value || '';
+    const text = encodeURIComponent(
+      "🔩 *SBA Inteeriors – Site Visit Booking*\n\n" +
+      "👤 *Name:* " + name + "\n" +
+      "📱 *Phone:* " + phone + "\n" +
+      "🛠 *Service Needed:* " + service + "\n" +
+      "📅 *Preferred Date:* " + date + "\n" +
+      "🕒 *Preferred Time:* " + time + "\n" +
+      "💬 *Message:* " + message
+    );
+    window.open("https://wa.me/918047515624?text=" + text, "_blank");
+  }
+</script>
+</body>
+</html>
